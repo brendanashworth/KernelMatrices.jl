@@ -66,7 +66,7 @@ end
 # Implement methods to be a valid subtype of AbstractPDMat.
 
 # if M is d x d, dim(M) is d.
-dim(M::KernelMatrix{T,N,A,Fn}) where{T,N,A,Fn} = length(M.x1)
+PDMats.dim(M::KernelMatrix{T,N,A,Fn}) where{T,N,A,Fn} = length(M.x1)
 
 # Always 2.
 ndims(M::KernelMatrix{T,N,A,Fn}) where{T,N,A,Fn} = 2
