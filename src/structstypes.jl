@@ -1,5 +1,5 @@
 
-mutable struct KernelMatrix{T, N, A, Fn} 
+mutable struct KernelMatrix{T, N, A, Fn} <: AbstractPDMat{T}
   x1       ::AbstractVector{A}
   x2       ::AbstractVector{A}
   parms    ::SVector{N, Float64}
