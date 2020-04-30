@@ -7,6 +7,7 @@ module KernelMatrices
 
   import IterTools
   import LinearAlgebra: mul!
+  import PDMats: AbstractPDMat
 
   export KernelMatrix, ACA, full
 
