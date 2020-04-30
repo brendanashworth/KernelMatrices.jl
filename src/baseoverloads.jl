@@ -63,3 +63,14 @@ function LinearAlgebra.:*(M::KernelMatrix{T,N,A,Fn}, x::Matrix{T})::Matrix{T} wh
   return mul!(out, M, x)
 end
 
+# Implement methods to be a valid subtype of AbstractPDMat.
+
+# if M is d x d, dim(M) is d.
+dim(M::KernelMatrix{T,N,A,Fn}) where{T,N,A,Fn} = length(M.x1)
+
+# Always 2.
+ndims(M::KernelMatrix{T,N,A,Fn}) where{T,N,A,Fn} = 2
+
+# Return the full matrix.
+Base.Matrix(M::KernelMatrix{T,N,A,Fn}) where{T,N,A,Fn} = full(M)
+

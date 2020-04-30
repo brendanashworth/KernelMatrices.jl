@@ -9,7 +9,7 @@ module KernelMatrices
   import LinearAlgebra: mul!
   import PDMats: AbstractPDMat
 
-  export KernelMatrix, ACA, full
+  export KernelMatrix, ACA, full, dim, ndims
 
   include("structstypes.jl")
 
