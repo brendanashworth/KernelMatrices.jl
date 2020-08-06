@@ -19,7 +19,7 @@ end
 # A recursive HODLR matrix structure. Very simple, and designed for matrices
 # that are not symmetric and so you'll probably only want to do matvecs with
 # them anyway.
-mutable struct RKernelHODLR{T, LF<:LowRankFact}
+mutable struct RKernelHODLR{T, LF<:LowRankFact} <: AbstractMatrix{T}
   A11::Union{Matrix{T}, RKernelHODLR{T}}
   A22::Union{Matrix{T}, RKernelHODLR{T}}
   A12::LF
