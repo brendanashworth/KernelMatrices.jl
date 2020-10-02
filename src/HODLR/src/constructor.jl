@@ -120,7 +120,7 @@ end
 #
 # I'm also hoping, though, that the new threaded model in julia 1.3 will mean
 # that this object can be constructed quite efficiently in massive parallel.
-function RKernelHODLR(K::KernelMatrix{T,N,A,Fn}, tol::Float64, maxrank::Int64=0,
+function RKernelHODLR_make(K::KernelMatrix{T,N,A,Fn}, tol::Float64, maxrank::Int64=0,
                       lvl::HierLevel=LogLevel(7)) where{T,N,A,Fn}
 
   # If the level is LogLevel, call the function again with that FixedLevel:
