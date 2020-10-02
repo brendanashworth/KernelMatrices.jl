@@ -126,7 +126,7 @@ function RKernelHODLR_make(K::KernelMatrix{T,N,A,Fn}, tol::Float64, maxrank::Int
   # If the level is LogLevel, call the function again with that FixedLevel:
   if typeof(lvl) <: LogLevel
     lv = FixedLevel(Int64(floor(log2(minimum(size(K))) - lvl.lv)))
-    return RKernelHODLR(K, tol, maxrank, lv)
+    return RKernelHODLR_make(K, tol, maxrank, lv)
   end
 
   # Check sizes:
@@ -147,8 +147,8 @@ function RKernelHODLR_make(K::KernelMatrix{T,N,A,Fn}, tol::Float64, maxrank::Int
   if isone(lvl.lv)
     return RKernelHODLR{T, UVt{T}}(full(K11), full(K22), A12, A21)
   else
-    A11 = RKernelHODLR(K11, tol, maxrank, HODLR.FixedLevel(lvl.lv-1))
-    A22 = RKernelHODLR(K22, tol, maxrank, HODLR.FixedLevel(lvl.lv-1))
+    A11 = RKernelHODLR_make(K11, tol, maxrank, HODLR.FixedLevel(lvl.lv-1))
+    A22 = RKernelHODLR_make(K22, tol, maxrank, HODLR.FixedLevel(lvl.lv-1))
     return RKernelHODLR{T, UVt{T}}(A11, A22, A12, A21)
   end
 end
